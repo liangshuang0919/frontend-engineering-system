@@ -1,0 +1,47 @@
+{
+  "name": "@frontend-engineering-system2/utils",
+  "version": "0.2.0",
+  "author": "Jie Xie",
+  "description": "Shared utility functions for frontend-engineering-system.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "pack:check": "npm pack --dry-run",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:unit:coverage": "vitest run --coverage",
+    "prepublishOnly": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm build && pnpm pack:check"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "devDependencies": {
+    "@frontend-engineering-system2/eslint-config": "workspace:*",
+    "@frontend-engineering-system2/ts-config": "workspace:*",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.61.0",
+    "vitest": "catalog:"
+  }
+}
